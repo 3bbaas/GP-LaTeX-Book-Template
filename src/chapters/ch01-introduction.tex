@@ -1,0 +1,79 @@
+\chapter{Introduction}
+\label{ch:introduction}
+
+This is a starter chapter to help you get going with the template.
+Replace this content with your own writing. Below are examples of the
+custom commands available in this template.
+
+
+\section{Images}
+\label{sec:images}
+
+Use \verb|\insertimage| to include a figure with a caption and label:
+
+\insertimage{__.png}{A sample placeholder image}{fig:sample-image}{0.4\textwidth}
+
+As shown in Figure~\ref{fig:sample-image}, images are automatically centered
+and numbered.
+
+
+\section{Tables}
+\label{sec:tables}
+
+Use \verb|\inserttable| to create tables:
+
+\inserttable{A sample table}{tab:sample}{lcc}{
+  \toprule
+  \textbf{Item} & \textbf{Value} & \textbf{Status} \\
+  \midrule
+  Alpha & 42   & OK \\
+  Beta  & 17   & OK \\
+  Gamma & 99   & N/A \\
+  \bottomrule
+}
+
+Refer to Table~\ref{tab:sample} using its label.
+
+
+\section{Code Snippets}
+\label{sec:code}
+
+Insert code from an external file:
+
+\insertcode{code/sample.py}{python}{A sample Python script}{lst:sample}
+
+Or show specific lines:
+
+\insertcodelines{code/sample.py}{python}{6}{9}{function get\_avatar}{lst:sample-lines}
+
+\insertlinescodeclean{code/sample.py}{python}{11}{13}{API handler}{lst:handler}
+
+\section{Callout Boxes}
+\label{sec:callouts}
+
+\note{This is an informational note. Use it to highlight important details.}
+
+\warningbox{This is a warning box. Use it for caveats and potential pitfalls.}
+
+\tipbox{This is a tip box. Use it for best practices and helpful hints.}
+
+
+\section{Abbreviations}
+\label{sec:abbreviations}
+
+First mention of \abbr{api} will include a footnote with the full form.
+Subsequent uses of \abbr{api} will just show the short form.
+
+You can also use:
+\begin{itemize}[leftmargin=2em]
+  \item \verb|\abbrfull{api}|: \abbrfull{api}
+  \item \verb|\abbrshort{api}|: \abbrshort{api}
+  \item \verb|\abbrlong{api}|: \abbrlong{api}
+\end{itemize}
+
+
+\section{References}
+\label{sec:references}
+
+Cite sources with \verb|\insertref{key}|, e.g.\
+\insertref{knuth1984} and \insertref{lamport1994}.

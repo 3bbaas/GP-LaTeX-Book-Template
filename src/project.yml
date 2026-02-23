@@ -1,0 +1,21 @@
+# The init script replaces placeholders in metadata.tex with these values.
+
+version: "1.0.0"
+book_title: "My Book Title"
+book_subtitle: "Subtitle or Description"
+university_name: "Your University"
+department_name: "Your Department"
+project_name: "Your Project Name"
+academic_year: "2025 / 2026"
+release_date: "Released: Month Year"
+
+team_members:
+  - "First Last"
+  - "First Last"
+
+supervisors:
+  - "Dr. Supervisor Name"
+
+# (placed in images/)
+university_logo: "university_logo"
+project_logo: "project_logo"

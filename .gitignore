@@ -1,0 +1,43 @@
+# LaTeX build artifacts
+build/
+*.aux
+*.bbl
+*.bcf
+*.blg
+*.fdb_latexmk
+*.fls
+*.log
+*.out
+*.run.xml
+*.synctex.gz
+*.toc
+*.lof
+*.lot
+*.lol
+*.nav
+*.snm
+*.vrb
+*.idx
+*.ind
+*.ilg
+
+# Minted cache
+_minted-main/
+
+# Published output
+# output/
+scripts/install.sh
+example/images/*
+
+# Generated docs
+USAGE.html
+
+docs/
+
+# Editor files
+*.swp
+*.swo
+*~
+.vscode/
+.github/
+.idea/

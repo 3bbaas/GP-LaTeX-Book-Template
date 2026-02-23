@@ -1,0 +1,23 @@
+# Build artifacts
+build/
+
+# Git
+.git/
+.gitignore
+
+# Docker
+.dockerignore
+
+# Editor / IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Stale minted cache
+_minted-main/

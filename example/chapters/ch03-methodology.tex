@@ -1,0 +1,74 @@
+\chapter{Methodology}
+\label{ch:methodology}
+
+\lipsum[18-19]
+
+
+\section{System Architecture}
+\label{sec:architecture}
+
+\lipsum[20]
+
+\warningbox{The architecture described here is a high-level overview. Detailed
+component specifications are provided in Appendix~\ref{app:additional-data}.}
+
+
+\section{Technology Stack}
+\label{sec:tech-stack}
+
+The following technologies were selected for the implementation:
+
+\inserttable{Technology stack}{tab:tech-stack}{ll}{
+  \toprule
+  \textbf{Component}  & \textbf{Technology} \\
+  \midrule
+  Frontend             & React.js            \\
+  Backend              & Django REST Framework \\
+  Database             & PostgreSQL          \\
+  Containerization     & Docker              \\
+  CI/CD                & GitHub Actions      \\
+  \bottomrule
+}
+
+\lipsum[21]
+
+
+\section{Implementation Details}
+\label{sec:implementation}
+
+\lipsum[22]
+
+\insertcode{code/sample.py}{python}{Sample Python implementation}{lst:sample-full}
+
+The code in Listing~\ref{lst:sample-full} demonstrates the core processing logic
+of the system.
+
+\lipsum[23]
+
+\insertcodelines{code/sample.py}{python}{5}{15}{Main function excerpt}{lst:sample-main}
+
+Listing~\ref{lst:sample-main} highlights the main function entry point.
+
+
+\tipbox{For local development, ensure that Docker and Python 3.10+ are
+installed before proceeding with the setup instructions.}
+
+
+\section{Testing Strategy}
+\label{sec:testing}
+
+\lipsum[14]
+
+\insertdiff{code/sync-vs-async.diff}{Refactoring to async}{lst:diff}
+
+\lipsum[10]
+
+
+
+\begin{enumerate}[label=\arabic*.]
+  \item \textbf{Unit Testing}: Individual components tested in isolation.
+  \item \textbf{Integration Testing}: End-to-end \abbr{api} workflows validated.
+  \item \textbf{Performance Testing}: Load testing \abbr{ai} under simulated conditions.
+\end{enumerate}
+
+\lipsum[25]

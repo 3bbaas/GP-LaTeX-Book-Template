@@ -1,0 +1,121 @@
+% ─── Load project metadata (auto-generated from project.yml) ─────────────────
+\input{metadata}
+
+% ─── Packages ────────────────────────────────────────────────────────────────
+
+% Encoding & fonts
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+
+% Page geometry
+\usepackage[
+  a4paper,
+  top=2.5cm,
+  bottom=2.5cm,
+  left=2.5cm,
+  right=2cm,
+  headheight=14pt
+]{geometry}
+
+% Headers & footers
+\usepackage{fancyhdr}
+
+% Graphics
+\usepackage{graphicx}
+\graphicspath{{images/}}
+
+% Tables
+\usepackage{booktabs}
+\usepackage{tabularx}
+\usepackage{longtable}
+\usepackage{array}
+
+% Colors
+\usepackage[dvipsnames,svgnames,x11names]{xcolor}
+
+% Code highlighting (minted — requires -shell-escape)
+\usepackage{minted}
+
+% Caption styling
+\usepackage[font=small, labelfont=bf, skip=8pt]{caption}
+
+% Bibliography (biblatex + biber)
+\usepackage[
+  backend=biber,
+  style=ieee,
+  sorting=nyt,
+  maxbibnames=99
+]{biblatex}
+\addbibresource{references.bib}
+
+% Hyperlinks (load last among these)
+\usepackage[
+  colorlinks=true,
+  linkcolor=NavyBlue,
+  citecolor=ForestGreen,
+  urlcolor=RoyalBlue,
+  bookmarks=true,
+  bookmarksnumbered=true,
+  pdftitle={\BookTitle},
+]{hyperref}
+
+% Lorem ipsum for placeholder text (remove for production)
+\usepackage{lipsum}
+
+% Better appendix handling
+\usepackage[toc,page]{appendix}
+
+% Math (in case needed)
+\usepackage{amsmath,amssymb}
+
+% Paragraph spacing (space between paragraphs) + 0.5 cm indent
+\usepackage{parskip}
+\usepackage{indentfirst}
+\setlength{\parindent}{0.5cm}
+
+% Float control
+\usepackage{float}
+
+% Subfigures
+\usepackage{subcaption}
+
+% PDF pages inclusion
+\usepackage{pdfpages}
+
+% Enumeration / lists
+\usepackage{enumitem}
+
+% tcolorbox for note boxes
+\usepackage[most]{tcolorbox}
+
+% ─── Abbreviations (footnote on first use) ──────────────────────────────────
+% Defines \defabbr{key}{SHORT}{Long Form} and \abbr{key}
+% First use: prints "SHORT" with a footnote "SHORT: Long Form"
+% Subsequent uses: prints "SHORT" only
+\newcommand{\defabbr}[3]{%
+  \expandafter\newif\csname if@abbr@#1@used\endcsname
+  \expandafter\newcommand\csname @abbr@short@#1\endcsname{#2}%
+  \expandafter\newcommand\csname @abbr@long@#1\endcsname{#3}%
+}
+\newcommand{\abbr}[1]{%
+  \ifcsname @abbr@short@#1\endcsname
+    \csname @abbr@short@#1\endcsname%
+    \csname if@abbr@#1@used\endcsname\else
+      \footnote{\csname @abbr@short@#1\endcsname: \csname @abbr@long@#1\endcsname}%
+      \global\expandafter\csname @abbr@#1@usedtrue\endcsname
+    \fi
+  \else
+    \textbf{??#1??}%
+  \fi
+}
+\newcommand{\abbrfull}[1]{%
+  \csname @abbr@long@#1\endcsname\ (\csname @abbr@short@#1\endcsname)%
+}
+\newcommand{\abbrshort}[1]{\csname @abbr@short@#1\endcsname}
+\newcommand{\abbrlong}[1]{\csname @abbr@long@#1\endcsname}
+
+% ─── Load custom style files ────────────────────────────────────────────────
+\input{styles/minted}
+\input{styles/layout}
+\input{styles/commands}
+\input{glossary}

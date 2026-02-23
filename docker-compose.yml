@@ -1,0 +1,9 @@
+services:
+  book:
+    container_name: latex-book-builder
+    build: .
+    user: "${UID:-1000}:${GID:-1000}"
+    volumes:
+      - .:/book
+    working_dir: /book
+    command: make build

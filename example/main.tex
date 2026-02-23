@@ -1,0 +1,66 @@
+\documentclass[a4paper,14pt]{extreport}
+
+% --- Load configuration & packages ------------------------------------------
+\input{config}
+
+%                             DOCUMENT BEGINS
+\begin{document}
+
+% --- FRONT MATTER (Roman numerals) ------------------------------------------
+\pagenumbering{roman}
+
+% Title Page (no header/footer)
+\pagestyle{empty}
+\input{frontmatter/titlepage}
+
+% Restore headers for frontmatter pages
+\pagestyle{fancy}
+
+% Abstract
+\input{frontmatter/abstract}
+\clearpage
+
+% Acknowledgments
+\input{frontmatter/acknowledgments}
+\clearpage
+
+% Table of Contents
+\tableofcontents
+\clearpage
+
+% List of Figures
+\listoffigures
+\clearpage
+
+% List of Tables
+\listoftables
+\clearpage
+
+% List of Code Snippets
+\listoflistings
+\clearpage
+
+\pagenumbering{arabic}
+
+% Chapter 1: Introduction
+\input{chapters/ch01-introduction}
+
+% Chapter 2: Literature Review
+\input{chapters/ch02-literature-review}
+
+% Chapter 3: Methodology
+\input{chapters/ch03-methodology}
+
+%% NEW_CHAPTER_HERE %%
+
+% Bibliography
+\printbibliography[heading=bibintoc, title={References}]
+\clearpage
+
+% Appendices (A1, A2, ... numbering)
+% \begin{appendices}
+  % \input{appendices/appendix-a}
+  %% NEW_APPENDIX_HERE %%
+% \end{appendices}
+
+\end{document}

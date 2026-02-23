@@ -1,0 +1,59 @@
+\pagestyle{fancy}
+\fancyhf{} 
+
+\fancyhead[L]{\small\textsc{\BookTitle}}
+\fancyhead[R]{\small\textit{\leftmark}}
+
+\fancyfoot[C]{\thepage}
+
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0pt}
+
+\fancypagestyle{plain}{%
+  \fancyhf{}
+  \fancyfoot[C]{\thepage}
+  \renewcommand{\headrulewidth}{0pt}
+}
+
+% --- Chapter & section heading formatting ------------------------------------
+\usepackage{titlesec}
+
+\usepackage{tocloft}
+
+% Numbered chapters: centered on own page
+\titleformat{\chapter}[display]
+{\normalfont\Huge\bfseries\centering}      
+{\vspace*{\fill}Chapter \thechapter}      
+{20pt}                                    
+{}                                     
+[\vspace*{\fill}\newpage]                  
+
+% Starred chapters (Abstract, Acknowledgments): content on same page, normal margins
+\titleformat{name=\chapter, numberless}[block]
+{\normalfont\Huge\bfseries}
+{}
+{0pt}
+{}
+\titlespacing*{name=\chapter, numberless}{0pt}{-20pt}{20pt}
+
+% --- TOC / LOF / LOT title styling ------------------------------------------
+\renewcommand{\cfttoctitlefont}{\Large\bfseries}
+\renewcommand{\cftloftitlefont}{\Large\bfseries}
+\renewcommand{\cftlottitlefont}{\Large\bfseries}
+\setlength{\cftbeforetoctitleskip}{0pt}
+\setlength{\cftaftertoctitleskip}{20pt}
+\setlength{\cftbeforeloftitleskip}{0pt}
+\setlength{\cftafterloftitleskip}{20pt}
+\setlength{\cftbeforelottitleskip}{0pt}
+\setlength{\cftafterlottitleskip}{20pt}
+
+\renewcommand{\listoflistingscaption}{\Large\bfseries List of Code Snippets}
+
+
+% --- TOC entry formatting ----------------------------------------------------
+\renewcommand{\cftchappresnum}{Chapter }     
+\renewcommand{\cftchapaftersnum}{ \textemdash\ } 
+\newlength{\chapprenumwidth}
+\settowidth{\chapprenumwidth}{Chapter 00 \textemdash\ }  
+\cftsetindents{chapter}{0pt}{\chapprenumwidth}  
+\renewcommand{\cftchapfont}{\bfseries}       

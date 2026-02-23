@@ -1,0 +1,235 @@
+% --- Insert Image ------------------------------------------------------------
+% Usage: \insertimage{filename}{caption}{label}{width}
+\newcommand{\insertimage}[4]{%
+  \begin{figure}[H]
+    \centering
+    \includegraphics[width=#4]{#1}
+    \caption{#2}
+    \label{#3}
+  \end{figure}
+}
+
+% --- Insert Two Images Side by Side -----------------------------------------
+% Usage: \inserttwoimages{file1}{cap1}{label1}{file2}{cap2}{label2}{overall_caption}{overall_label}
+\newcommand{\inserttwoimages}[8]{%
+  \begin{figure}[H]
+    \centering
+    \begin{subfigure}[b]{0.48\textwidth}
+      \centering
+      \includegraphics[width=\textwidth]{#1}
+      \caption{#2}
+      \label{#3}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.48\textwidth}
+      \centering
+      \includegraphics[width=\textwidth]{#4}
+      \caption{#5}
+      \label{#6}
+    \end{subfigure}
+    \caption{#7}
+    \label{#8}
+  \end{figure}
+}
+
+% --- Insert Table ------------------------------------------------------------
+% Usage: \inserttable{caption}{label}{column_spec}{rows}
+\newcommand{\inserttable}[4]{%
+  \begin{table}[H]
+    \centering
+    \caption{#1}
+    \label{#2}
+    \begin{tabular}{#3}
+      #4
+    \end{tabular}
+  \end{table}
+}
+
+% --- Insert Code from External File -----------------------------------------
+% Usage: \insertcode{filepath}{language}{caption}{label}
+%   e.g. \insertcode{code/sample.py}{python}{Sample script}{lst:sample}
+\newcommand{\insertcode}[4]{%
+  \begin{listing}[H]
+    \inputminted[linenos, frame=single, breaklines, label=#1]{#2}{#1}
+    \caption{#3}
+    \label{#4}
+  \end{listing}
+}
+
+% --- Insert Specific Lines from External File -------------------------------
+% Usage: \insertcodelines{filepath}{language}{firstline}{lastline}{caption}{label}
+%   e.g. \insertcodelines{code/sample.py}{python}{5}{15}{Main function}{lst:main}
+\newcommand{\insertcodelines}[6]{%
+  \begin{listing}[H]
+    \inputminted[linenos, frame=single, breaklines, firstline=#3, lastline=#4, label=#1]{#2}{#1}
+    \caption{#5}
+    \label{#6}
+  \end{listing}
+}
+
+% --- Insert Code from File (NO filename shown) ------------------------------
+% Like \insertcode but the filename is NOT displayed on the code block.
+% Usage: \insertcodeclean{filepath}{language}{caption}{label}
+%   e.g. \insertcodeclean{code/sample.py}{python}{API handler}{lst:handler}
+\newcommand{\insertcodeclean}[4]{%
+  \begin{listing}[H]
+    \inputminted[linenos, frame=single, breaklines, fontsize=\small]{#2}{#1}
+    \caption{#3}
+    \label{#4}
+  \end{listing}
+}
+
+% --- Insert Code lines from File (NO filename shown) ------------------------------
+% Like \insertcode but the filename is NOT displayed on the code block.
+% Usage: \insertlinescodeclean{filepath}{language}{first}{last}{caption}{label}
+%   e.g. \insertlinescodeclean{code/sample.py}{python}{4}{12}{API handler}{lst:handler}
+\newcommand{\insertlinescodeclean}[6]{%
+  \begin{listing}[H]
+    \inputminted[linenos, frame=single, breaklines, firstline=#3, lastline=#4, fontsize=\small]{#2}{#1}
+    \caption{#5}
+    \label{#6}
+  \end{listing}
+}
+
+% --- Insert Code Block from File (NO filename, NO caption) ------------------
+% Like \codeblock but reads from a file instead of inline.
+% Usage: \insertcodeblock{filepath}{language}
+%   e.g. \insertcodeblock{code/sample.py}{python}
+\newcommand{\insertcodeblock}[2]{%
+  \inputminted[linenos, frame=single, breaklines, fontsize=\small]{#2}{#1}
+}
+
+% --- Insert Reference (shorthand) -------------------------------------------
+% Usage: \insertref{key}
+\newcommand{\insertref}[1]{\cite{#1}}
+
+% --- Note / Callout Box -----------------------------------------------------
+% Usage: \note{This is an important note.}
+\newtcolorbox{notebox}{
+  colback=blue!5!white,
+  colframe=NavyBlue!70!black,
+  fonttitle=\bfseries,
+  title=Note,
+  arc=3pt,
+  boxrule=0.8pt,
+  left=8pt, right=8pt, top=6pt, bottom=6pt
+}
+\newcommand{\note}[1]{\begin{notebox}#1\end{notebox}}
+
+% --- Warning Box ------------------------------------------------------------
+% Usage: \warningbox{Be careful with this step.}
+\newtcolorbox{warnbox}{
+  colback=red!5!white,
+  colframe=BrickRed!70!black,
+  fonttitle=\bfseries,
+  title=Warning,
+  arc=3pt,
+  boxrule=0.8pt,
+  left=8pt, right=8pt, top=6pt, bottom=6pt
+}
+\newcommand{\warningbox}[1]{\begin{warnbox}#1\end{warnbox}}
+
+% --- Tip Box ----------------------------------------------------------------
+% Usage: \tipbox{A useful tip for the reader.}
+\newtcolorbox{tipboxenv}{
+  colback=green!5!white,
+  colframe=ForestGreen!70!black,
+  fonttitle=\bfseries,
+  title=Tip,
+  arc=3pt,
+  boxrule=0.8pt,
+  left=8pt, right=8pt, top=6pt, bottom=6pt
+}
+\newcommand{\tipbox}[1]{\begin{tipboxenv}#1\end{tipboxenv}}
+
+% --- Inline Code Block (no external file) -----------------------------------
+% Usage: \begin{inlinecode}{language}{caption}{label}
+%          your code here...
+%        \end{inlinecode}
+\makeatletter
+\newcommand{\@inlinecode@caption}{}
+\newcommand{\@inlinecode@label}{}
+\newenvironment{inlinecode}[3]{%
+  \renewcommand{\@inlinecode@caption}{#2}%
+  \renewcommand{\@inlinecode@label}{#3}%
+  \VerbatimEnvironment
+  \begin{listing}[H]%
+  \begin{minted}[linenos, frame=single, breaklines, fontsize=\small]{#1}%
+}{%
+  \end{minted}%
+  \caption{\@inlinecode@caption}%
+  \label{\@inlinecode@label}%
+  \end{listing}%
+}
+\makeatother
+
+% Simple inline code (no caption/label, just the block)
+% Usage: \begin{codeblock}{language}
+%          code here...
+%        \end{codeblock}
+%        \end{codeblock}
+\newenvironment{codeblock}[1]{%
+  \VerbatimEnvironment
+  \begin{minted}[linenos, frame=single, breaklines, fontsize=\small]{#1}%
+}{%
+  \end{minted}%
+}
+
+% --- Code Diff (uses minted with Pygments diff lexer) -----------------------
+% Auto-generate .diff files with: python3 scripts/codediff.py <old> <new> -o <out.diff>
+
+% Insert a diff from an external .diff file (with caption & label)
+% Usage: \insertdiff{filepath}{caption}{label}
+%   e.g. \insertdiff{code/refactor.diff}{Refactoring to async}{lst:diff}
+\newcommand{\insertdiff}[3]{%
+  \begin{listing}[H]
+    \inputminted[frame=single, breaklines, fontsize=\small]{diff}{#1}
+    \caption{#2}
+    \label{#3}
+  \end{listing}
+}
+
+% Write diff inline (no external file, with caption & label)
+% Usage: \begin{codediff}{caption}{label}
+%          --- old.py
+%          +++ new.py
+%          -removed line
+%          +added line
+%        \end{codediff}
+\makeatletter
+\newcommand{\@codediff@caption}{}
+\newcommand{\@codediff@label}{}
+\newenvironment{codediff}[2]{%
+  \renewcommand{\@codediff@caption}{#1}%
+  \renewcommand{\@codediff@label}{#2}%
+  \VerbatimEnvironment
+  \begin{listing}[H]%
+  \begin{minted}[frame=single, breaklines, fontsize=\small]{diff}%
+}{%
+  \end{minted}%
+  \caption{\@codediff@caption}%
+  \label{\@codediff@label}%
+  \end{listing}%
+}
+\makeatother
+
+% --- Compare Two Implementations Side by Side --------------------------------
+% Usage: \comparecode{title1}{lang1}{code1}{title2}{lang2}{code2}{caption}{label}
+\newcommand{\comparecode}[8]{%
+  \begin{figure}[H]
+    \centering
+    \begin{minipage}[t]{0.48\textwidth}
+      \centering
+      \textbf{#1}
+      \inputminted[linenos, frame=single, breaklines, fontsize=\scriptsize]{#2}{#3}
+    \end{minipage}
+    \hfill
+    \begin{minipage}[t]{0.48\textwidth}
+      \centering
+      \textbf{#4}
+      \inputminted[linenos, frame=single, breaklines, fontsize=\scriptsize]{#5}{#6}
+    \end{minipage}
+    \caption{#7}
+    \label{#8}
+  \end{figure}
+}
