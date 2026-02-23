@@ -7,7 +7,8 @@ A professional LaTeX book template with Docker support, helper scripts, and cust
 Set up a new project with interactive metadata prompts:
 
 ```bash
-curl -sL https://gist.githubusercontent.com/3bbaas/d65a2f59878a8b3c8774b740d9dcf733/raw/64ac8f74a2a94e0851a5aca636627415af3b6039/gp-latex-template-book.sh | bash -s doc-book```
+curl -sL https://gist.githubusercontent.com/3bbaas/d65a2f59878a8b3c8774b740d9dcf733/raw/64ac8f74a2a94e0851a5aca636627415af3b6039/gp-latex-template-book.sh | bash -s doc-book
+```
 
 The script will prompt you for your book title, team members, supervisors, logos, and more — then generate `project.yml` and `metadata.tex` automatically.
 
