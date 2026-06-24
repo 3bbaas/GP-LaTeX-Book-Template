@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="docs/banner.png" alt="GP LaTeX Book Template" width="100%" />
+  <img src="assets/banner.png" alt="GP LaTeX Book Template" width="100%" />
 </div>
 
 <br/>
@@ -20,7 +20,7 @@ curl -sL https://gist.githubusercontent.com/3bbaas/d65a2f59878a8b3c8774b740d9dcf
 
 Prompts you for your book title, team members, supervisors, logos, etc. — then generates `project.yml` and `metadata.tex` automatically.
 
-### With Docker *(no TeX install needed)*
+### With Docker _(no TeX install needed)_
 
 ```bash
 make docker         # Build image and run
