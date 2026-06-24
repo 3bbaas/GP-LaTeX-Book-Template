@@ -6,7 +6,7 @@
 
 A professional **LaTeX book template** for academic and graduation projects — with Docker support, helper scripts, and custom commands.
 
-> **Full book example:** [ANIS Solutions Documentation](https://github.com/ANIS-Solutions/Documentation)
+> **Full book example — ANIS Solutions Documentation:** [PDF](https://github.com/ANIS-Solutions/Documentation/blob/main/book/output/anis-documentation-v1.0.2.pdf) · [Source](https://github.com/ANIS-Solutions/Documentation/tree/main/book)
 
 ---
 
