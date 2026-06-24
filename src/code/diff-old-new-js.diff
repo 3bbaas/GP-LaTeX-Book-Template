@@ -1,0 +1,7 @@
+--- old-ex.js
++++ new-ex.js
+@@ -1,3 +1,3 @@
+ import dotenv from 'dotenv';
+
+-dotenv.config({ path: './.env' });
++dotenv.config({ path: './config.env' });

@@ -1,9 +1,20 @@
 % --- Insert Image ------------------------------------------------------------
 % Usage: \insertimage{filename}{caption}{label}{width}
+% If the image file does not exist yet, a shaded placeholder is rendered
+% so the document builds cleanly while diagrams are pending.
 \newcommand{\insertimage}[4]{%
   \begin{figure}[H]
     \centering
-    \includegraphics[width=#4]{#1}
+    \IfFileExists{#1}{%
+      \includegraphics[width=#4]{#1}%
+    }{%
+      \fcolorbox{gray}{gray!15}{%
+        \parbox[c][6cm]{#4}{%
+          \centering\color{gray}%
+          \textit{[Pending: \texttt{#1}]}%
+        }%
+      }%
+    }%
     \caption{#2}
     \label{#3}
   \end{figure}
@@ -32,16 +43,44 @@
   \end{figure}
 }
 
+% --- Insert Two Mobile Screenshots Side by Side -----------------------------
+% Same interface as \inserttwoimages but with narrower subfigures (0.38)
+% for mobile application screens that are taller than wide.
+\newcommand{\inserttwomobileimages}[8]{%
+  \begin{figure}[H]
+    \centering
+    \begin{subfigure}[b]{0.35\textwidth}
+      \centering
+      \includegraphics[width=\textwidth]{#1}
+      \caption{#2}
+      \label{#3}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.35\textwidth}
+      \centering
+      \includegraphics[width=\textwidth]{#4}
+      \caption{#5}
+      \label{#6}
+    \end{subfigure}
+    \caption{#7}
+    \label{#8}
+  \end{figure}
+}
+
 % --- Insert Table ------------------------------------------------------------
 % Usage: \inserttable{caption}{label}{column_spec}{rows}
+%   column_spec : any tabularx column spec, e.g. {l X r} or {lcc}
+%   rows        : table body including \toprule … \bottomrule
+% The macro uses tabularx at \textwidth and sets arraystretch to 1.25.
 \newcommand{\inserttable}[4]{%
   \begin{table}[H]
     \centering
+    \renewcommand{\arraystretch}{1.25}%
+    \begin{tabularx}{\textwidth}{#3}
+      #4
+    \end{tabularx}
     \caption{#1}
     \label{#2}
-    \begin{tabular}{#3}
-      #4
-    \end{tabular}
   \end{table}
 }
 

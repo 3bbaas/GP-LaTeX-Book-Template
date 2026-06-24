@@ -20,10 +20,11 @@ build/
 *.idx
 *.ind
 *.ilg
-
+_temp
+arch
 # Minted cache
 _minted-main/
-
+_minted-*
 # Published output
 # output/
 scripts/install.sh
@@ -38,6 +39,8 @@ docs/
 *.swp
 *.swo
 *~
-.vscode/
-.github/
+# .vscode/
+# .github/
 .idea/
+notes.md
+ntoes.md

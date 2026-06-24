@@ -1,6 +1,11 @@
 \pagestyle{fancy}
 \fancyhf{} 
 
+% Redefine \chaptermark to only store the chapter title (#1)
+%\renewcommand{\chaptermark}[1]{\markboth{\MakeUppercase{#1}}{}}
+% Redefine \chaptermark to only store "Chapter X"
+\renewcommand{\chaptermark}[1]{\markboth{\MakeUppercase{\chaptername\ \thechapter}}{}}
+
 \fancyhead[L]{\small\textsc{\BookTitle}}
 \fancyhead[R]{\small\textit{\leftmark}}
 
@@ -20,13 +25,14 @@
 
 \usepackage{tocloft}
 
-% Numbered chapters: centered on own page
+% % Numbered chapters: centered on own page
 \titleformat{\chapter}[display]
 {\normalfont\Huge\bfseries\centering}      
 {\vspace*{\fill}Chapter \thechapter}      
 {20pt}                                    
 {}                                     
 [\vspace*{\fill}\newpage]                  
+
 
 % Starred chapters (Abstract, Acknowledgments): content on same page, normal margins
 \titleformat{name=\chapter, numberless}[block]
@@ -37,6 +43,7 @@
 \titlespacing*{name=\chapter, numberless}{0pt}{-20pt}{20pt}
 
 % --- TOC / LOF / LOT title styling ------------------------------------------
+\renewcommand{\contentsname}{Table of Contents}
 \renewcommand{\cfttoctitlefont}{\Large\bfseries}
 \renewcommand{\cftloftitlefont}{\Large\bfseries}
 \renewcommand{\cftlottitlefont}{\Large\bfseries}
@@ -47,7 +54,16 @@
 \setlength{\cftbeforelottitleskip}{0pt}
 \setlength{\cftafterlottitleskip}{20pt}
 
-\renewcommand{\listoflistingscaption}{\Large\bfseries List of Code Snippets}
+\renewcommand{\listoflistingscaption}{List of Code Snippets}
+
+% --- Shared title style for all frontmatter list pages ----------------------
+% Used by: TOC, LOF, LOT, List of Code Snippets, List of Abbreviations.
+% Mirrors the tocloft \Large\bfseries title with identical vertical spacing.
+\newcommand{\ListPageTitle}[1]{%
+  \vspace*{\cftbeforetoctitleskip}%
+  {\Large\bfseries #1}%
+  \par\vspace{\cftaftertoctitleskip}%
+}
 
 
 % --- TOC entry formatting ----------------------------------------------------

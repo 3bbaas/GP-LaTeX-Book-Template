@@ -1,0 +1,69 @@
+% =============================================================================
+% colors.tex — Anis Documentation Color Palette
+% =============================================================================
+%
+% All colors defined here in HTML hex for easy customization.
+% Import with: \input{styles/colors}  (already done from config.tex)
+%
+% Semantic usage guide:
+%   DocPrimary / DocPrimaryFill       — main data series, single-series charts
+%   DocSecondary / DocSecondaryFill   — second data series (e.g. gender groups)
+%   DocTertiary / DocTertiaryFill     — third data series or positive/present
+%   DocQuaternary / DocQuaternaryFill — fourth series or danger/risk
+%   DocNeutral / DocNeutralFill       — absent / missing / de-emphasized data
+%   DocAccent                         — highlights, callouts, source notes
+%   DocMuted                          — grid lines, axis rules, helper lines
+% =============================================================================
+
+% --- Primary series (deep blue from hair/phone) -------------------------------
+\definecolor{DocPrimary}{HTML}{113686}        % deep blue — main bars / lines
+\definecolor{DocPrimaryFill}{HTML}{5097E9}    % med blue  — bar fill (lighter)
+
+% --- Secondary series (green from father/shield) ------------------------------
+\definecolor{DocSecondary}{HTML}{50A71E}      % deep green — second data series
+\definecolor{DocSecondaryFill}{HTML}{77CA34}  % light green — bar fill
+
+% --- Tertiary series (bright blue from shield border) -------------------------
+\definecolor{DocTertiary}{HTML}{2D7DFA}       % bright blue — third data series
+\definecolor{DocTertiaryFill}{HTML}{94C3FA}   % soft blue   — bar fill
+
+% --- Quaternary series (teal transition from shield) --------------------------
+\definecolor{DocQuaternary}{HTML}{289197}     % teal      — fourth / risk data
+\definecolor{DocQuaternaryFill}{HTML}{65BDC3} % soft teal — bar fill
+
+% --- Neutral / absent (blue-gray) ---------------------------------------------
+\definecolor{DocNeutral}{HTML}{8598AD}        % slate     — absent / missing
+\definecolor{DocNeutralFill}{HTML}{C3D0DF}    % light slate — bar fill
+
+% --- Accent / callout (sparkle yellow-green) ----------------------------------
+\definecolor{DocAccent}{HTML}{A4E839}         % lime/yellow — highlights / notes
+\definecolor{DocAccentFill}{HTML}{CFF582}     % pale lime   — fill
+
+% --- Utility ------------------------------------------------------------------
+\definecolor{DocMuted}{HTML}{A3B1C1}          % cool gray — grid lines, rules
+\definecolor{DocBackground}{HTML}{F2F7FA}     % off-white — panel backgrounds
+
+% =============================================================================
+% pgfplots named styles — use as \addplot[doc/primary] etc.
+% =============================================================================
+\pgfplotsset{
+  doc/primary/.style    = {fill=DocPrimaryFill,   draw=DocPrimary,   line width=0.6pt},
+  doc/secondary/.style  = {fill=DocSecondaryFill, draw=DocSecondary, line width=0.6pt},
+  doc/tertiary/.style   = {fill=DocTertiaryFill,  draw=DocTertiary,  line width=0.6pt},
+  doc/quaternary/.style = {fill=DocQuaternaryFill,draw=DocQuaternary,line width=0.6pt},
+  doc/neutral/.style    = {fill=DocNeutralFill,   draw=DocNeutral,   line width=0.6pt},
+  doc/accent/.style     = {fill=DocAccentFill,    draw=DocAccent,    line width=0.6pt},
+  %
+  % Dim variants (50 % opacity fill) for "all" / background series
+  doc/primary-dim/.style    = {fill=DocPrimaryFill!50,   draw=DocPrimary!70,   line width=0.6pt},
+  doc/secondary-dim/.style  = {fill=DocSecondaryFill!50, draw=DocSecondary!70, line width=0.6pt},
+  %
+  % Shared grid style
+  doc/grid/.style = {dashed, DocMuted!50},
+}
+% --- Chapter Cover brand colors (used by \chaptercover) ----------------------
+\definecolor{PrimaryBlue}{HTML}{2F80ED}   % vivid blue  — gradient start, numbers
+\definecolor{DarkBlue}{HTML}{21489D}      % deep navy   — chapter title text
+\definecolor{PrimaryGreen}{HTML}{84CC16}  % lime green  — gradient end, accents
+\definecolor{SoftBlue}{HTML}{EAF4FF}      % pale blue   — bottom info box fill
+\definecolor{LightGray}{HTML}{F7F9FC}     % near-white  — reserved utility

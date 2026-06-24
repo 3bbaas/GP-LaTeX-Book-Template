@@ -10,11 +10,11 @@ academic_year: "2025 / 2026"
 release_date: "Released: Month Year"
 
 team_members:
-  - "First Last"
-  - "First Last"
+  - "Ahmed Abbas"
+  - "Ahmed Abbas 2"
 
 supervisors:
-  - "Dr. Supervisor Name"
+  - "Dr. Ahmed Abbas"
 
 # (placed in images/)
 university_logo: "university_logo"

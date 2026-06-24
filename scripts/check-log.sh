@@ -23,6 +23,11 @@ fi
 
 CLEANLOG=$(strings "$LOG")
 
+# Extract only the LAST pdflatex run from the log (multi-pass builds contain
+# intermediate runs that may have expected errors resolved in later passes).
+CLEANLOG=$(echo "$CLEANLOG" | awk '/^This is pdfTeX/{buf=""} {buf=buf"\n"$0} END{print buf}')
+
+
 echo -e "${BOLD}─── Build Log Analysis ───${NC}"
 echo ""
 

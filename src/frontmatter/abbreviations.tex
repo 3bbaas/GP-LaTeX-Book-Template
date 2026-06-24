@@ -1,0 +1,35 @@
+% =============================================================================
+% frontmatter/abbreviations.tex — List of Abbreviations
+% =============================================================================
+% DO NOT add rows here manually.
+% Every \defabbr{key}{SHORT}{Long Form} in glossary.tex automatically
+% appends a row to \@abbrlist, which is rendered below.
+% To add an abbreviation: edit glossary.tex only.
+% =============================================================================
+
+\phantomsection
+\label{ch:abbreviations}
+\ListPageTitle{List of Abbreviations}
+
+The following table lists all abbreviations used in this document in
+alphabetical order. Each abbreviation is expanded in full on its first
+occurrence in the text as a footnote.
+
+\renewcommand{\arraystretch}{1.3}
+\begin{longtable}{l p{0.72\textwidth}}
+  \toprule
+  \textbf{Abbreviation} & \textbf{Full Form} \\
+  \midrule
+  \endfirsthead
+  \toprule
+  \textbf{Abbreviation} & \textbf{Full Form} \\
+  \midrule
+  \endhead
+  \midrule
+  \multicolumn{2}{r}{\small\itshape Continued on next page\ldots} \\
+  \endfoot
+  \bottomrule
+  \endlastfoot
+  % ── auto-generated from glossary.tex ─────────────────────────────────────
+  \AbbrTableRows
+\end{longtable}

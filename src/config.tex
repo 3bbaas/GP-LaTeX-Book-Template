@@ -6,6 +6,7 @@
 % Encoding & fonts
 \usepackage[T1]{fontenc}
 \usepackage{lmodern}
+\usepackage[htt]{hyphenat}  % Allow hyphenation in \texttt (monospace) text
 
 % Page geometry
 \usepackage[
@@ -48,6 +49,10 @@
 ]{biblatex}
 \addbibresource{references.bib}
 
+% Footnotes pinned to the bottom (must load BEFORE hyperref)
+\usepackage[bottom]{footmisc}
+\setlength{\skip\footins}{1.5cm}
+
 % Hyperlinks (load last among these)
 \usepackage[
   colorlinks=true,
@@ -67,6 +72,17 @@
 
 % Math (in case needed)
 \usepackage{amsmath,amssymb}
+
+% Charts and plots (pgfplots builds on TikZ)
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.18}
+\usetikzlibrary{patterns}
+
+% Chapter cover decoration
+\usepackage{eso-pic}
+
+% Line spacing — loaded here, activated per-section in main.tex
+\usepackage{setspace}
 
 % Paragraph spacing (space between paragraphs) + 0.5 cm indent
 \usepackage{parskip}
@@ -115,6 +131,7 @@
 \newcommand{\abbrlong}[1]{\csname @abbr@long@#1\endcsname}
 
 % ─── Load custom style files ────────────────────────────────────────────────
+\input{styles/colors}
 \input{styles/minted}
 \input{styles/layout}
 \input{styles/commands}

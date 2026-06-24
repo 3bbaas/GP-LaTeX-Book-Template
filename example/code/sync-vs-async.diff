@@ -1,9 +1,0 @@
---- old_code.py
-+++ new_code.py
-@@ -2,5 +2,5 @@
-     """Fetch user using async httpx."""
-     import httpx
-     async with httpx.AsyncClient() as client:
--        response = await client.get(f"/api/user/{user_id}")
-+        response = await client.get(f"/api/users/{user_id}")
-         return response.json()

@@ -12,6 +12,10 @@
 % Title Page (no header/footer)
 \pagestyle{empty}
 \input{frontmatter/titlepage}
+\newpage
+\thispagestyle{empty}
+\null
+\newpage
 
 % Restore headers for frontmatter pages
 \pagestyle{fancy}
@@ -41,10 +45,10 @@
 \clearpage
 
 \pagenumbering{arabic}
+\onehalfspacing   % 1.5× line height from here (chapters only)
 
 % Chapter 1: Introduction
 \input{chapters/ch01-introduction}
-
 %% NEW_CHAPTER_HERE %%
 
 % Bibliography
